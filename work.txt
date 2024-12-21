@@ -59,6 +59,8 @@ portfolio
 Team
 Feature Gallery(spend,categories,Transaction,Activity)
 Contact(Yet to be made)->contact.html
+
+Categories-Food,Accessories,Travel,Academics
 	   
 	   
 
