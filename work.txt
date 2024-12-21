@@ -1,0 +1,65 @@
+Database: FinBase
+
+Home page
+index.html
+
+About
+about project/website
+about.html
+
+portfolio
+User detail: Name, Email, Contact, Further information
+Table name: user(columns: userid(example:FB001)(primary key),Name, UserName, Email, Contact, isloggedin(bool))
+portfolio.html
+
+Team:
+Team member's details and their contributions(optional)
+information: Name, Sem and Section,Contribution , Photo
+cards in columns
+team.html
+
+Feature Gallery
+Includes all the features 
+Spend-spent money in all the categories (recent transaction/total transaction)
+Categories-all categories in deep dropdown(clicking a category in the spend section leads
+Transaction-Deep dropdown-categories -every category spend limit budget set by the user(0 if null)
+Activity-Graphs: Polar Area Chart-spend of all categories
+		Line Chart: Month-wise expenditure
+#Recommendation for any other features
+
+spend.html 
+Categories.html
+Transaction.html-Table name->Expense(columns-user-id, category ,spend, limit, budget)
+Activity.html
+
+Structure
+Home-Folder Name
+home.html
+home.CSS
+home.js
+
+JOBS
+
+Manichandan-index.html
+	    about.html
+	    Transaction.html
+
+Hrishikesh-team.html
+	   spend.html
+	   Categories.html
+
+Karan-Activity.html
+      portfolio.html
+      Transaction.html backend
+
+Navigation
+Home
+About
+portfolio
+Team
+Feature Gallery(spend,categories,Transaction,Activity)
+Contact(Yet to be made)->contact.html
+	   
+	   
+
+
