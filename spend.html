@@ -11,6 +11,7 @@
         font-family: Arial, sans-serif;
         color: #333;
       }
+
       header {
         display: flex;
         align-items: center;
@@ -19,30 +20,36 @@
         border-bottom: 2px solid #ddd;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       }
+
       header img {
         height: 50px;
         width: 50px;
         border-radius: 50%;
         border: 2px solid darkgreen;
       }
+
       header div {
         margin-left: 15px;
       }
+
       header span {
         font-size: 14px;
         color: #666;
       }
+
       header h3 {
         margin: 5px 0;
         font-size: 18px;
         color: #333;
       }
+
       .container {
         height: 90vh;
         display: flex;
         justify-content: center;
         align-items: center;
       }
+
       .card {
         text-align: center;
         background: linear-gradient(135deg, #1e90ff, #ff69b4, #d6853d);
@@ -54,18 +61,28 @@
         border-radius: 12px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
       }
+
+      .card:hover {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        transform: translateY(-5px);
+      }
+
       .card h3 {
         margin-bottom: 10px;
         font-size: 20px;
       }
+
       .card h1 {
         font-size: 36px;
         margin-bottom: 20px;
       }
+
       .card h5 span {
         font-size: inherit;
       }
+
       .details {
         display: flex;
         justify-content: space-around;
@@ -73,27 +90,33 @@
         margin-top: 20px;
         gap: 50px;
       }
+
       .details .section {
         text-align: center;
       }
+
       .details img {
         height: 40px;
         margin-bottom: 10px;
       }
+
       .details span {
         font-size: 14px;
         color: white;
       }
+
       .details h5 {
         font-size: 18px;
         color: white;
         margin-top: 5px;
       }
+
       .transactions {
         margin: 20px auto;
         width: 600px;
         padding: 5px;
       }
+
       .transactions div {
         display: flex;
         justify-content: space-between;
@@ -102,11 +125,29 @@
         border-radius: 8px;
         padding: 10px;
         margin-bottom: 20px;
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
       }
+
+      .transactions div:hover {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transform: translateY(-3px);
+      }
+
+      .transactions .left {
+        box-shadow: none;
+        text-shadow: none;
+      }
+
+      .transactions .left:hover {
+        text-shadow: none;
+        box-shadow: none;
+      }
+
       .transactions img {
         height: 30px;
         margin-right: 10px;
       }
+
       .transactions .left {
         display: flex;
         align-items: center;
@@ -116,13 +157,27 @@
         font-size: 16px;
         color: #333;
       }
+
       .transactions span {
         font-size: 16px;
         color: #333;
       }
+
       .transactions a {
         text-decoration: none;
         color: black;
+      }
+      .inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      }
+      .inner img {
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        margin-top: 12px;
       }
     </style>
   </head>
@@ -140,13 +195,17 @@
         <h1>$ <span id="totalBalance">48000.00</span></h1>
         <div class="details">
           <div class="section">
-            <img src="./income-icon.png" alt="Income" />
-            <span>Income</span>
+            <div class="inner">
+              <img src="" alt="Income" />
+              <span>Income</span>
+            </div>
             <h5>$ <span id="totalBalance">2500.00</span></h5>
           </div>
           <div class="section">
-            <img src="./expenses-icon.png" alt="Expenses" />
-            <span>Expenses</span>
+            <div class="inner">
+              <img src="" alt="Expenses" />
+              <span>Expenses</span>
+            </div>
             <h5>$ <span id="expensesAmount">800.00</span></h5>
           </div>
         </div>
@@ -164,7 +223,7 @@
             <img src="" alt="Shopping" />
             <h4><a href="#">Shopping</a></h4>
           </div>
-          <p>$ <span id="shoppingAmount">$150.00</span></p>
+          <p>$ <span id="shoppingAmount">150.00</span></p>
         </div>
         <div>
           <div class="left">
