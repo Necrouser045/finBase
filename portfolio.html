@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Spend</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Miniver&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
+
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        color: #333;
+        background-color: #00203fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: row;
+        padding: 0 20px;
+        gap: 20px;
+      }
+
+      .form-container,
+      .profile-card {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 400px; /* Fixed width for form and profile */
+        text-align: center;
+        margin: 10px;
+      }
+
+      .profile-card {
+        display: none; /* Initially hidden */
+        width: 350px;
+      }
+
+      .profile-card img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 15px;
+        border: 2px solid black;
+      }
+
+      .profile-card h3 {
+        margin: 10px 0;
+        color: #003f7f;
+      }
+
+      .profile-card p {
+        color: #333;
+      }
+
+      h2 {
+        color: #003f7f;
+        margin-bottom: 20px;
+      }
+
+      .input-container {
+        position: relative;
+        margin: 20px 0;
+      }
+
+      .input-field {
+        width: 100%;
+        padding: 12px 10px;
+        border-radius: 8px;
+        border: 2px solid #ccc;
+        font-size: 16px;
+        color: #333;
+        background-color: transparent;
+        box-sizing: border-box;
+        transition: border 0.3s ease, padding 0.3s ease;
+      }
+
+      .input-field:focus {
+        outline: none;
+        border-color: #003f7f;
+        padding-top: 18px;
+      }
+
+      .input-field:focus + label,
+      .input-field:not(:placeholder-shown) + label {
+        top: -10px;
+        left: 10px;
+        font-size: 12px;
+        color: #003f7f;
+        font-weight: bold;
+      }
+
+      label {
+        position: absolute;
+        top: 14px;
+        left: 10px;
+        font-size: 16px;
+        color: #aaa;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        background-color: white;
+        padding: 0 5px;
+      }
+
+      .input-field:focus::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: white;
+        z-index: 1;
+        border-radius: 8px;
+        pointer-events: none;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 12px;
+        background-color: #28a745;
+        color: white;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #218838;
+        transform: scale(1.01);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="profile-card" id="profile-card">
+      <img
+        src="./WhatsApp Image 2024-12-21 at 14.38.44_dfed6ca3.jpg"
+        alt="Profile Image"
+      />
+      <h3>Name: <span id="display-name"></span></h3>
+      <h3>Username: <span id="display-username"></span></h3>
+      <h3>Email: <span id="display-email"></span></h3>
+      <h3>DOB: <span id="display-dob"></span></h3>
+    </div>
+    <div class="form-container">
+      <h2>User Portfolio</h2>
+      <form id="portfolio-form">
+        <div class="input-container">
+          <input
+            type="text"
+            class="input-field"
+            id="name"
+            placeholder=" "
+            required
+          />
+          <label for="name">Full Name</label>
+        </div>
+        <div class="input-container">
+          <input
+            type="email"
+            class="input-field"
+            id="email"
+            placeholder=" "
+            required
+          />
+          <label for="email">Email Address</label>
+        </div>
+        <div class="input-container">
+          <input
+            type="text"
+            class="input-field"
+            id="username"
+            placeholder=" "
+            required
+          />
+          <label for="username">Username</label>
+        </div>
+        <div class="input-container">
+          <input
+            type="date"
+            class="input-field"
+            id="dob"
+            placeholder=" "
+            required
+          />
+          <label for="dob">Date of Birth</label>
+        </div>
+        <button type="submit" class="btn">Save Changes</button>
+      </form>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        let data = JSON.parse(localStorage.getItem("data")) || null;
+
+        if (data) {
+          document.getElementById("display-name").textContent = data.name;
+          document.getElementById("display-username").textContent =
+            data.username;
+          document.getElementById("display-email").textContent = data.email;
+          document.getElementById("display-dob").textContent = data.dob;
+          document.getElementById("profile-card").style.display = "block";
+        }
+
+        document
+          .querySelector("#portfolio-form")
+          .addEventListener("submit", (e) => {
+            e.preventDefault();
+            const name = document.getElementById("name").value;
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            const dob = document.getElementById("dob").value;
+
+            const newData = { name, username, email, dob };
+
+            document.getElementById("display-name").textContent = name;
+            document.getElementById("display-username").textContent = username;
+            document.getElementById("display-email").textContent = email;
+            document.getElementById("display-dob").textContent = dob;
+            document.getElementById("profile-card").style.display = "block";
+
+            localStorage.setItem("data", JSON.stringify(newData));
+          });
+      });
+    </script>
+  </body>
+</html>
