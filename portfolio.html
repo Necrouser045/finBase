@@ -27,13 +27,13 @@
         padding: 20px;
         border-radius: 12px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        width: 400px; /* Fixed width for form and profile */
+        width: 400px;
         text-align: center;
         margin: 10px;
       }
 
       .profile-card {
-        display: none; /* Initially hidden */
+        display: none;
         width: 350px;
       }
 
@@ -194,41 +194,56 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        let data = JSON.parse(localStorage.getItem("data")) || null;
+        const profileCard = document.getElementById("profile-card");
+        const displayName = document.getElementById("display-name");
+        const displayUsername = document.getElementById("display-username");
+        const displayEmail = document.getElementById("display-email");
+        const displayDob = document.getElementById("display-dob");
+        const form = document.querySelector("#portfolio-form");
+        const nameInput = document.getElementById("name");
+        const usernameInput = document.getElementById("username");
+        const emailInput = document.getElementById("email");
+        const dobInput = document.getElementById("dob");
+
+        const data = JSON.parse(localStorage.getItem("data"));
 
         if (data) {
-          document.getElementById("display-name").textContent = data.name;
-          document.getElementById("display-username").textContent =
-            data.username;
-          document.getElementById("display-email").textContent = data.email;
-          document.getElementById("display-dob").textContent = data.dob;
-          document.getElementById("profile-card").style.display = "block";
+          displayName.textContent = data.name;
+          displayUsername.textContent = data.username;
+          displayEmail.textContent = data.email;
+          displayDob.textContent = data.dob;
+          profileCard.style.display = "block";
         }
 
-        document
-          .querySelector("#portfolio-form")
-          .addEventListener("submit", (e) => {
-            e.preventDefault();
-            const name = document.getElementById("name").value.trim();
-            const username = document.getElementById("username").value.trim();
-            const email = document.getElementById("email").value.trim();
-            const dob = document.getElementById("dob").value.trim();
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
 
-            if (name === "" || username === "" || email === "" || dob === "") {
-              alert("Please enter all the details");
-              return;
-            }
+          const name = nameInput.value.trim();
+          const username = usernameInput.value.trim();
+          const email = emailInput.value.trim();
+          const dob = dobInput.value.trim();
 
-            const newData = { name, username, email, dob };
+          if (!name || !username || !email || !dob) {
+            alert("Please enter all the details");
+            return;
+          }
 
-            document.getElementById("display-name").textContent = name;
-            document.getElementById("display-username").textContent = username;
-            document.getElementById("display-email").textContent = email;
-            document.getElementById("display-dob").textContent = dob;
-            document.getElementById("profile-card").style.display = "block";
+          const newData = { name, username, email, dob };
 
-            localStorage.setItem("data", JSON.stringify(newData));
-          });
+          displayName.textContent = name;
+          displayUsername.textContent = username;
+          displayEmail.textContent = email;
+          displayDob.textContent = dob;
+          profileCard.style.display = "block";
+
+          nameInput.value =
+            emailInput.value =
+            usernameInput.value =
+            dobInput.value =
+              "";
+
+          localStorage.setItem("data", JSON.stringify(newData));
+        });
       });
     </script>
   </body>
