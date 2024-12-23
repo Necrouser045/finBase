@@ -9,7 +9,7 @@
 
       body {
         margin: 0;
-        font-family: "Poppins", sans-serif; 
+        font-family: "Poppins", sans-serif; /* Using Poppins font */
         color: #333;
         /*background: linear-gradient(to bottom right, #003f7f, #001f3f);*/
         background-color: #00203fff;
@@ -53,8 +53,8 @@
 
       .input-field:focus {
         outline: none;
-        border-color: #003f7f; 
-        padding-top: 18px;
+        border-color: #003f7f; /* Border color when focused */
+        padding-top: 18px; /* Reduced padding */
       }
 
       .input-field:focus + label,
@@ -94,7 +94,7 @@
       .btn {
         width: 100%;
         padding: 12px;
-        background-color: #28a745;
+        background-color: #28a745; /* Green button color */
         color: white;
         font-size: 16px;
         border: none;
@@ -104,8 +104,8 @@
       }
 
       .btn:hover {
-        background-color: #218838;
-        transform: scale(1.01);
+        background-color: #218838; /* Darker shade of green on hover */
+        transform: scale(1.01); /* Increase size to 105% */
       }
 
       .signup-link {
@@ -173,5 +173,38 @@
         Already have an account? <a href="./login.html">Login here</a>
       </div>
     </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const usernameInput = document.getElementById("username");
+        const passwordInput = document.getElementById("password");
+        const confirmPasswordInput =
+          document.getElementById("confirm-password");
+        const emailInput = document.getElementById("email");
+
+        document.querySelector("form").addEventListener("submit", (e) => {
+          e.preventDefault();
+          const username = usernameInput.value.trim(),
+            password = passwordInput.value.trim(),
+            email = emailInput.value.trim(),
+            confirmedPassword = confirmPasswordInput.value.trim();
+
+          if (password !== confirmedPassword) {
+            alert("please enter the same password for confirmation");
+            return;
+          }
+          usernameInput.value =
+            passwordInput.value =
+            confirmPasswordInput.value =
+            emailInput.value =
+              "";
+          const newUser = {
+            username: username,
+            password: password,
+            email: email,
+          };
+          console.log(newUser);
+        });
+      });
+    </script>
   </body>
 </html>
