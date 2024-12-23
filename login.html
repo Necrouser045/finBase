@@ -9,7 +9,7 @@
 
       body {
         margin: 0;
-        font-family: "Poppins", sans-serif;
+        font-family: "Poppins", sans-serif; /* Using Poppins font */
         color: #333;
         /*background: linear-gradient(to bottom right, #003f7f, #001f3f);
         */
@@ -54,8 +54,8 @@
 
       .input-field:focus {
         outline: none;
-        border-color: #003f7f; 
-        padding-top: 18px; 
+        border-color: #003f7f; /* Border color when focused */
+        padding-top: 18px; /* Reduced padding */
       }
 
       .input-field:focus + label,
@@ -95,7 +95,7 @@
       .btn {
         width: 100%;
         padding: 12px;
-        background-color: #28a745;
+        background-color: #28a745; /* Green button color */
         color: white;
         font-size: 16px;
         border: none;
@@ -105,7 +105,7 @@
       }
 
       .btn:hover {
-        background-color: #218838; 
+        background-color: #218838; /* Darker shade of green on hover */
       }
 
       .signup-link {
@@ -153,5 +153,22 @@
         Don't have an account? <a href="./signup.html">Sign up here</a>
       </div>
     </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        document.querySelector("form").addEventListener("submit", () => {
+          const email = emailInput.value.trim();
+          const password = passwordInput.value.trim();
+          if (email === "" || password === "") {
+            alert("Please enter all the details");
+            return;
+          }
+          const loginData = { email, password };
+          emailInput.value = passwordInput.value = "";
+          console.log(loginData);
+        });
+      });
+    </script>
   </body>
 </html>
