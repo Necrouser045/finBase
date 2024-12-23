@@ -27,13 +27,13 @@
         padding: 20px;
         border-radius: 12px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        width: 400px;
+        width: 400px; /* Fixed width for form and profile */
         text-align: center;
         margin: 10px;
       }
 
       .profile-card {
-        display: none; 
+        display: none; /* Initially hidden */
         width: 350px;
       }
 
@@ -209,10 +209,15 @@
           .querySelector("#portfolio-form")
           .addEventListener("submit", (e) => {
             e.preventDefault();
-            const name = document.getElementById("name").value;
-            const username = document.getElementById("username").value;
-            const email = document.getElementById("email").value;
-            const dob = document.getElementById("dob").value;
+            const name = document.getElementById("name").value.trim();
+            const username = document.getElementById("username").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const dob = document.getElementById("dob").value.trim();
+
+            if (name === "" || username === "" || email === "" || dob === "") {
+              alert("Please enter all the details");
+              return;
+            }
 
             const newData = { name, username, email, dob };
 
