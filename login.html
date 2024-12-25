@@ -101,7 +101,6 @@
         border: none;
         border-radius: 8px;
         cursor: pointer;
-        transition: background 0.3s ease;
       }
 
       .btn:hover {
@@ -126,7 +125,7 @@
   <body>
     <div class="form-container">
       <h2>Login</h2>
-      <form action="#">
+      <form action="#" id="loginForm">
         <div class="input-container">
           <input
             type="email"
@@ -150,25 +149,34 @@
         <button type="submit" class="btn">Login</button>
       </form>
       <div class="signup-link">
-        Don't have an account? <a href="./signup.html">Sign up here</a>
+        Don't have an account? <a href="signup.html">Sign up here</a>
       </div>
     </div>
     <script>
+      // When the document is fully loaded
       document.addEventListener("DOMContentLoaded", () => {
-        const emailInput = document.getElementById("email");
-        const passwordInput = document.getElementById("password");
-        document.querySelector("form").addEventListener("submit", () => {
-          const email = emailInput.value.trim();
-          const password = passwordInput.value.trim();
-          if (email === "" || password === "") {
-            alert("Please enter all the details");
-            return;
-          }
-          const loginData = { email, password };
-          emailInput.value = passwordInput.value = "";
-          console.log(loginData);
-        });
+          const emailInput = document.getElementById("email");
+          const passwordInput = document.getElementById("password");
+
+          // Handle form submission
+          document.getElementById("loginForm").addEventListener("submit", (e) => {
+              e.preventDefault();
+
+              const email = emailInput.value.trim();
+              const password = passwordInput.value.trim();
+
+              // Validate inputs
+              if (email === "" || password === "") {
+                  alert("Please enter all the details");
+                  return;
+              }
+
+              const loginData = { email, password };
+              console.log(loginData);
+
+              window.location.href = "/index.html";
+          });
       });
-    </script>
+  </script>
   </body>
 </html>
